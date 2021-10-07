@@ -1,0 +1,7 @@
+나머지 추가 코드 위치 (플러그인을 사용하기 위한 부모 클래스)
+
+https://www.playnexacro.com/#show:learn:1325
+
+NSDicEx.h
+PluginCommon.h
+PluginCommon.m
