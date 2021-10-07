@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="inAppBrowserSample" width="1280" height="720" titletext="New Form" onload="inAppBrowserSample_onload">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" screenid="Desktop_screen,Tablet_screen,Phone_screen" width="1280">
+        <Button id="Button00" taborder="0" text="InAppBrowser 열기" left="22" top="114" width="336" height="73" onclick="Button00_onclick"/>
+        <Static id="Static00" taborder="1" text="InAppBrowser PlugIn 샘플 입니다." left="21" top="12" width="599" height="36"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[// standard.js 에서 아래 코드로 수정 하였음.
+//    nexacro.Standard = function(name, obj)
+//    {
+//      ...
+//      this._clsnm = [name];
+//      ...
+//    }
+
+
+this.inAppBrowserSample_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+    // InAppBrowserPlugin 생성 및 콜백함수 등록
+	this.addChild("InAppBrowserPlugin", new nexacro.Standard("InAppBrowserPlugin"));
+	this.InAppBrowserPlugin.addEventHandler("on_callback", this.on_InAppBrowserPlugin_callback, this);
+};
+
+// InAppBrowser 열기
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+ 	var objParam = { starturl : "http://172.10.12.59:8080/html/inAppBrowser_page.html" };
+							  
+	this.InAppBrowserPlugin.callMethod("show", objParam); // (methodid, param)
+};
+
+/*
+  InAppBrowserPlugin.callMethod 콜백함수
+  e 변수에 앱 에서 셋팅해 반환한 데이터를 담고있다.
+*/
+this.on_InAppBrowserPlugin_callback = function(obj, e)
+{
+    var str = "\nthis.on_callback svcid       ::: " + e.svcid
+            + "\nthis.on_callback reason      ::: " + e.reason
+            + "\nthis.on_callback returnvalue ::: " + e.returnvalue;
+
+    alert("on_callback -\n" + str);
+};]]></Script>
+  </Form>
+</FDL>
