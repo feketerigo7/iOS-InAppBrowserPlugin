@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html > <!-- LANGUAGE : locale setting (value of location property in Environment) -->
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1, user-scalable=0">
+	
+    <meta charset="UTF-8">
+    <title>iOS 인앱브라우저 테스트 페이지 입니다.</title>
+    
+    <script type="text/javascript">	
+	
+	function nativeCall(userdata) {
+		window.webkit.messageHandlers.nexacro_iab.postMessage(userdata); // bridge name: nexacro_iab
+	}
+    
+    </script>
+</head>
+<body>
+
+<button onclick="nativeCall('userdata 입력')">Native 호출 (userdata)</button>
+
+<button onclick="nativeCall('종료')">Native 호출 (인앱브라우저 종료)</button>
+
+</body>
+</html>
